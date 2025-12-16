@@ -3,7 +3,7 @@ import { Exclude } from 'class-transformer';
 import Role from '../enum/role.enum';
 import { PasswordResetToken } from './password.reset-token.entity';
 
-@Entity('usereentityelaneyew')
+@Entity('usereentityelaneyewq')
 class User {
   @PrimaryGeneratedColumn()
   public id: number;
