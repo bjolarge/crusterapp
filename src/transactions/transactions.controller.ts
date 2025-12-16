@@ -26,7 +26,7 @@ export class TransactionsController {
     return this.transactionsService.transfer(senderId, transferDto);
   }
 
-  //fund koinsave first
+  //fund cruster first
   @UseGuards(JwtAuthenticationGuard)
   @Post('deposit')
   @ApiBody({ type: DepositDto })

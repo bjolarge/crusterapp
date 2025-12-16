@@ -10,11 +10,11 @@ export class CreateUserDto {
     password: string;
 
    @IsPhoneNumber()
-   @IsNotEmpty()
-    public phoneNumber:string;
+   @IsOptional()
+    public phoneNumber?:string;
   
     @IsString()
-   @IsNotEmpty()
-    public address:string;
+   @IsOptional()
+    public address?:string;
   
 }

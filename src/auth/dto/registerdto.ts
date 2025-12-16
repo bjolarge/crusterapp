@@ -11,7 +11,7 @@ import { ApiProperty } from '@nestjs/swagger';
 export class RegisterDto {
   @ApiProperty({
     description: 'Email address of the user',
-    example: 'koinsave@project.com',
+    example: 'crusterproject@project.com',
     required: true,
   })
   @IsEmail()
@@ -39,18 +39,18 @@ export class RegisterDto {
   @ApiProperty({
     description: 'Phone number of the user -include country code',
     example: '+2348021853479',
-    required: true,
+    required: false,
   })
   @IsPhoneNumber()
-  @IsNotEmpty()
-  public phoneNumber: string;
+  @IsOptional()
+  public phoneNumber?: string;
 
   @ApiProperty({
     description: 'Address of the user',
     example: '14B Lekki Penisula, Lekki, Lagos',
-    required: true,
+    required: false,
   })
   @IsString()
-  @IsNotEmpty()
-  public address: string;
+  @IsOptional()
+  public address?: string;
 }

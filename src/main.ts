@@ -9,10 +9,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
    const config = new DocumentBuilder()
-    .setTitle('KoinSave Project')
+    .setTitle('CrusterApp Project')
     .setDescription('The endpoints in this app power: authentication and transfers')
     .setVersion('1.0')
-    .addTag('koinsave')
+    .addTag('CrusterApp')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

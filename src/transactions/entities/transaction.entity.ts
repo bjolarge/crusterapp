@@ -12,7 +12,7 @@
 
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn } from 'typeorm';
 
-@Entity('transactionspath')
+@Entity('transactionspathe')
 export class Transaction {
   @PrimaryGeneratedColumn()
   id: number;
@@ -25,6 +25,13 @@ export class Transaction {
 
   @Column({ type: 'decimal', precision: 12, scale: 2 })
   amount: number;
+
+  @Column({ 
+    type: 'varchar', 
+    length: 3, 
+    default: 'USD' 
+  })
+  currency: string;
 
   @CreateDateColumn()
   createdAt: Date;

@@ -3,7 +3,7 @@ import { Exclude } from 'class-transformer';
 import Role from '../enum/role.enum';
 import { PasswordResetToken } from './password.reset-token.entity';
 
-@Entity('usereentityelane')
+@Entity('usereentityelaneye')
 class User {
   @PrimaryGeneratedColumn()
   public id: number;
@@ -18,10 +18,10 @@ class User {
   @Exclude()
   public password: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   public phoneNumber?: string;
 
-  @Column({ nullable: false })
+  @Column({ nullable: true })
   public address?: string;
 
   @Column({

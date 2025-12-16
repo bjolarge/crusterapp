@@ -15,6 +15,7 @@ import { EmailSchedulingModule } from './email-scheduling/email-scheduling.modul
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { createModule } from 'create-nestjs-middleware-module';
 import { TransactionsModule } from './transactions/transactions.module';
+import { WalletModule } from './wallet/wallet.module';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 
@@ -82,7 +83,7 @@ const SessionModuleBase = createModule(() => {
         ssl: configService.get('DB_SSL'),
         autoLoadEntities: true,
 
-        synchronize: false,
+        synchronize: true,
       }),
       inject: [ConfigService],
     }),
@@ -92,6 +93,7 @@ const SessionModuleBase = createModule(() => {
     EmailConfirmationModule,
     EmailSchedulingModule,
     TransactionsModule,
+    WalletModule,
   ],
   controllers: [AppController],
   providers: [AppService],
