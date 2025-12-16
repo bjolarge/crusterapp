@@ -24,6 +24,11 @@ export class WalletController {
   }
 
   @Post(':id/fund')
+   @ApiBody({ type: FundWalletDto })
+    @ApiOkResponse({ description: 'Wallet funded successfully' })
+    @ApiBadRequestResponse({
+      description: 'cannot fund wallet',
+    })
   fundWallet(
     @Param('id') walletId: string,
     @Body() dto: FundWalletDto,
@@ -33,6 +38,11 @@ export class WalletController {
   }
 
   @Post(':id/transfer')
+  @ApiBody({ type: TransferWalletDto })
+    @ApiOkResponse({ description: 'Transfer Wallet successfully' })
+    @ApiBadRequestResponse({
+      description: 'cannot transfer wallet successfully',
+    })
   transfer(
     @Param('id') walletId: string,
     @Body() dto: TransferWalletDto,
@@ -42,6 +52,10 @@ export class WalletController {
   }
 
   @Get(':id')
+    @ApiOkResponse({ description: ' Wallet history retrieved successfully' })
+    @ApiBadRequestResponse({
+      description: 'cannot retrieve wallet records successfully',
+    })
   getWallet(@Param('id') walletId: string, @GetUser() user) {
     return this.walletService.getWallet(walletId, user.id);
   }

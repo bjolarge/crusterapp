@@ -14,19 +14,13 @@ import { EmailConfirmationModule } from './email-confirmation/email-confirmation
 import { EmailSchedulingModule } from './email-scheduling/email-scheduling.module';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
 import { createModule } from 'create-nestjs-middleware-module';
-import { TransactionsModule } from './transactions/transactions.module';
+//import { TransactionsModule } from './transactions/transactions.module';
 import { WalletModule } from './wallet/wallet.module';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 
-//this prevents CSRF attacks
-// const CookieParserModuleBase = createModule(() => {
-//   return cookieParser();
-// });
-
 const SessionModuleBase = createModule(() => {
   return session({
-    // secret:'my-secret-session-key',
     secret: process.env.MYSECRETSESSIONKEY,
     resave: false,
     saveUninitialized: false,
@@ -74,13 +68,13 @@ const SessionModuleBase = createModule(() => {
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        type: 'postgres',
-        host: configService.get('DB_HOST'),
-        port: configService.get<number>('DB_PORT'),
-        username: configService.get('DB_USERNAME'),
+      type: 'postgres',
+       host: configService.get('DB_HOST'),
+       port: +configService.get<number>('DB_PORT'),
+        username: configService.get('DB_USERNAME'), 
         password: configService.get('DB_PASSWORD'),
         database: configService.get('DB_NAME'),
-        ssl: configService.get('DB_SSL'),
+       ssl:configService.get('DB_SSL'),
         autoLoadEntities: true,
 
         synchronize: true,
@@ -92,7 +86,7 @@ const SessionModuleBase = createModule(() => {
     EmailModule,
     EmailConfirmationModule,
     EmailSchedulingModule,
-    TransactionsModule,
+   // TransactionsModule,
     WalletModule,
   ],
   controllers: [AppController],

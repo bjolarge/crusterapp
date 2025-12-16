@@ -3,7 +3,7 @@ import { Exclude } from 'class-transformer';
 import Role from '../enum/role.enum';
 import { PasswordResetToken } from './password.reset-token.entity';
 
-@Entity('usereentityelaneye')
+@Entity('usereentityelaneyew')
 class User {
   @PrimaryGeneratedColumn()
   public id: number;
@@ -48,8 +48,8 @@ class User {
   passwordResetTokens: PasswordResetToken[];
 
   // I added this for my account balance setup
-  @Column('decimal', { precision: 12, scale: 2, default: 0 })
-  balance: number;
+  // @Column('decimal', { precision: 12, scale: 2, default: 0 })
+  // balance: number;
 }
  
 export default User;

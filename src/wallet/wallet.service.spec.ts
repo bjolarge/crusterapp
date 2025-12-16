@@ -45,8 +45,6 @@ describe('WalletService', () => {
     jest.clearAllMocks();
   });
 
-  // ---------------- CREATE WALLET ----------------
-
   it('should create a wallet', async () => {
     const wallet = {
       id: 'wallet-1',
@@ -68,8 +66,6 @@ describe('WalletService', () => {
     expect(walletRepo.save).toHaveBeenCalledWith(wallet);
     expect(result).toEqual(wallet);
   });
-
-  // ---------------- FUND WALLET ----------------
 
   it('should fund a wallet', async () => {
     const wallet = {
